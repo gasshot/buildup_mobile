@@ -1,0 +1,17 @@
+package com.example.buildup
+
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+
+interface ApiService {
+    @GET("/test") // FastAPI 서버의 '/test' 엔드포인트에 GET 요청을 보냅니다.
+    fun testConnection(): Call<String> // 서버로부터 String 형태의 응답을 받을 것으로 예상합니다.
+
+    @POST("/user/login") // 로그인 엔드포인트 (POST 방식)
+    fun loginUser(@Body loginData: LoginRequest): Call<LoginResponse> // 요청 데이터와 응답 데이터 타입 정의
+
+    @POST("/user/join") // 회원가입 엔드포인트 (POST 방식)
+    fun joinUser(@Body joinData: JoinRequest): Call<JoinResponse> // 요청 데이터와 응답 데이터 타입 정의
+}

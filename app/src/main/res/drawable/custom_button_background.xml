@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 하얀 배경 -->
+    <item android:drawable="@android:color/white" />
+
+    <!-- 이미지 오버레이 -->
+    <item>
+        <bitmap
+            android:src="@drawable/login_background"
+            android:gravity="center"
+            android:tileMode="disabled" />
+            android:scaleType="centerInside" />  <!-- 이미지 크기 조정 -->
+    </item>
+
+</layer-list>
