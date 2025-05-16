@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#77A479"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,32 +13,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="사용자 이름: "
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="222dp"
+        android:text="SkinThera"
+        android:textColor="#009688"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/buttonLogout"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <TextView
-        android:id="@+id/textViewUserRole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="역할: "
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
-
-    <TextView
-        android:id="@+id/textViewUserId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="ID: "
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserRole" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonLogout"
@@ -51,59 +34,52 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
+    <Button
+        android:id="@+id/analysisBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="52dp"
+        android:text="내 피부 분석하기"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/recommandBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="111dp"
+        android:text="추천 제품 다시 보기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/analysisBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_shadow_background"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogout" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="20dp"
+        android:text="당신의 피부타입은?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <!--버튼들-->
-
-    <Button
-        android:id="@+id/Btn_personal"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="152dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#FDFDFD"
-        android:radius="15dp"
-        android:text="퍼스널 컬러 진단하기"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/overlayImage_personal"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/login_background"
-        android:translationZ="100dp"
-        android:clickable="false"
-        app:layout_constraintStart_toStartOf="@+id/Btn_personal"
-        app:layout_constraintTop_toTopOf="@+id/Btn_personal" />
-
-    <Button
-        android:id="@+id/Btn_skin"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="228dp"
-        android:layout_marginTop="152dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#FDFDFD"
-        android:radius="15dp"
-        android:text="피부 분석하기"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/overlayImage_skin"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="12dp"
-        android:clickable="false"
-        android:src="@drawable/login_background"
-        android:translationZ="100dp"
-        app:layout_constraintStart_toStartOf="@id/Btn_skin"
-        app:layout_constraintTop_toTopOf="@id/Btn_skin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

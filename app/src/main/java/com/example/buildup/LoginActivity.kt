@@ -88,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
                         val loginResponse = response.body()
                         if (loginResponse?.success == true) {
                             val user = loginResponse.user
-                            welcomeText.text = "${user?.name}님, ${user?.role}으로 로그인 성공!"
+                            //welcomeText.text = "${user?.name}님, ${user?.role}으로 로그인 성공!"
                             //Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
 
                             // SharedPreferences에 사용자 정보 저장

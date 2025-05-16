@@ -7,9 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    //private const val BASE_URL = "http://127.0.0.1:8000" // 여기에 FastAPI 서버 주소를 입력하세요
-    private const val BASE_URL = "http://10.0.2.2:8000" // 실제 서버 주소로 변경
-    //private const val BASE_URL = "https://10.0.2.2:8000" // 개발용
+    // FastAPI 서버의 배포된 주소
+    private const val BASE_URL = "https://buildup-emuz.onrender.com"
+
     val instance: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

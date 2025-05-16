@@ -1,0 +1,18 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow Layer -->
+    <item>
+        <shape>
+            <corners android:radius="16dp" /> <!-- 둥근 모서리 -->
+            <solid android:color="#11000000" /> <!-- 더 옅은 그림자 -->
+        </shape>
+    </item>
+
+    <!-- Background Layer -->
+    <item android:top="2dp" android:left="2dp" android:right="2dp" android:bottom="2dp">
+        <shape>
+            <corners android:radius="16dp" /> <!-- 둥근 모서리 -->
+            <solid android:color="#FFFFFF" /> <!-- 흰색 배경 -->
+        </shape>
+    </item>
+</layer-list>
+

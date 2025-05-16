@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+
+dependencies {
+
+}
 android {
     namespace = "com.example.buildup"
     compileSdk = 35
@@ -49,6 +53,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson 컨버터 추가
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
