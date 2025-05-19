@@ -3,7 +3,9 @@ package com.example.buildup
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildup.JoinActivity
 import com.example.buildup.databinding.ActivityMainBinding
 
 
@@ -43,6 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         // 분석 버튼 클릭 시 이미지 선택 Intent 호출
         binding.analysisBtn.setOnClickListener {
+            Log.d("일단 테스트", "이미지 저장")
+
+            // 다음 화면으로 이동(분석화면)
+            val intent = Intent(this@MainActivity, AnalysisActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

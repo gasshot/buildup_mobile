@@ -4,9 +4,12 @@ package com.example.buildup
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -26,6 +29,16 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editTextPassword: EditText
     private lateinit var buttonLogin: Button
 
+    private lateinit var backgroundImageView: ImageView
+
+    private val images = listOf(
+        R.drawable.edit_jwy4, // 교체할 이미지 목록
+        R.drawable.edit_jwy5,
+        R.drawable.edit_jwy6
+    )
+    private var currentIndex = 0
+    private val handler = Handler(Looper.getMainLooper())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -38,8 +51,18 @@ class LoginActivity : AppCompatActivity() {
         buttonLogin = findViewById(R.id.buttonLogin)
 
         // View 연결
-        val welcomeText = findViewById<TextView>(R.id.welcomeText)
-        val buttonStart = findViewById<Button>(R.id.buttonStart)
+        backgroundImageView = findViewById<ImageView>(R.id.backgroundImageView)
+        buttonStart = findViewById<Button>(R.id.buttonStart)
+
+
+
+        // 10초마다 이미지 변경
+        startImageRotation()
+
+
+
+
+
 
         // 버튼 클릭 이벤트
 //        buttonStart.setOnClickListener {
@@ -121,6 +144,27 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    private fun startImageRotation() {
+        handler.post(object : Runnable {
+            override fun run() {
+                // 현재 인덱스의 이미지로 설정
+                backgroundImageView.setImageResource(images[currentIndex])
+
+                // 다음 인덱스 계산
+                currentIndex = (currentIndex + 1) % images.size
+
+                // 10초 후에 다시 실행
+                handler.postDelayed(this, 10000)
+            }
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // 핸들러 작업 중단
+        handler.removeCallbacksAndMessages(null)
     }
 }
 
