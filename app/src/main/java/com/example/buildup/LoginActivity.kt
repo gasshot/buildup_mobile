@@ -160,7 +160,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
-
+//ㅋㅋ
     override fun onDestroy() {
         super.onDestroy()
         // 핸들러 작업 중단
