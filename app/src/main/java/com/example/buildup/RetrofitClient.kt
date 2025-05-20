@@ -9,7 +9,7 @@ object RetrofitClient {
 
     // FastAPI 서버의 배포된 주소
     //private const val BASE_URL = "https://buildup-emuz.onrender.com"
-    private const val BASE_URL ="http://54.206.9.203:8000"
+    private const val BASE_URL ="http://54.206.9.203"
     val instance: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

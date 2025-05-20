@@ -12,7 +12,7 @@
         android:id="@+id/textViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="222dp"
         android:text="SkinThera"
@@ -24,47 +24,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="74dp"
         android:layout_height="52dp"
-        android:layout_marginStart="320dp"
+        android:layout_marginStart="312dp"
         android:layout_marginBottom="672dp"
         android:text="out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <Button
         android:id="@+id/analysisBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="234dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="260dp"
         android:text="내 피부 분석하기"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/recommandBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="217dp"
-        android:layout_marginBottom="111dp"
+        android:layout_marginEnd="244dp"
+        android:layout_marginBottom="164dp"
         android:text="추천 제품 다시 보기"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/analysisBtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/view"
-        android:layout_width="300dp"
+        android:layout_width="360dp"
         android:layout_height="300dp"
         android:layout_margin="8dp"
         android:layout_marginTop="58dp"
