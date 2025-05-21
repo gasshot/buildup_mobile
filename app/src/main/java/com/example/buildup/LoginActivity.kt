@@ -24,12 +24,16 @@ class LoginActivity : AppCompatActivity() {
     //Android 에뮬레이터 또는 실제 기기에서 127.0.0.1:8000으로 접근하려고 하면, 해당 에뮬레이터 또는 실제 기기 자신의 8000번 포트에 연결을 시도하게 됩니다. 따라서 개발 PC에서 실행 중인 FastAPI 서버에는 연결되지 않습니다.
 
     private lateinit var welcomeText: TextView
-    private lateinit var buttonStart: Button
+    private lateinit var buttonStart: TextView
     private lateinit var editTextUserId: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var buttonLogin: Button
-
+    private lateinit var buttonEditorLogin: TextView
     private lateinit var backgroundImageView: ImageView
+
+    private lateinit var buttonLoginGoogle: Button
+    private lateinit var buttonLoginKakao: Button
+
 
     private val images = listOf(
         R.drawable.edit_jwy4, // 교체할 이미지 목록
@@ -38,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
     )
     private var currentIndex = 0
     private val handler = Handler(Looper.getMainLooper())
+    private val IMAGE_ROTATION_DELAY = 5000L // 5초
+    private val ANIMATION_DURATION = 3200L // 페이드 애니메이션 지속 시간 (3.2초)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,51 +51,20 @@ class LoginActivity : AppCompatActivity() {
 
         // UI 요소 찾기
         welcomeText = findViewById(R.id.welcomeText)
-        buttonStart = findViewById(R.id.buttonStart)
+        buttonStart = findViewById(R.id.signupText)
         editTextUserId = findViewById(R.id.editTextUserId)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
+        buttonEditorLogin = findViewById(R.id.editorLogin)
+
+        buttonLoginGoogle = findViewById(R.id.buttonLoginGoogle)
+        buttonLoginKakao = findViewById(R.id.buttonLoginKakao)
 
         // View 연결
         backgroundImageView = findViewById<ImageView>(R.id.backgroundImageView)
-        buttonStart = findViewById<Button>(R.id.buttonStart)
 
-
-
-        // 10초마다 이미지 변경
-        startImageRotation()
-
-
-
-
-
-
-        // 버튼 클릭 이벤트
-//        buttonStart.setOnClickListener {
-//            Toast.makeText(this, "서버 연결 시도...", Toast.LENGTH_SHORT).show()
-//
-//            // ApiService의 testConnection() 함수를 호출하여 서버에 비동기 요청을 보냅니다.
-//            RetrofitClient.instance.testConnection().enqueue(object : Callback<String> {
-//                override fun onResponse(call: Call<String>, response: Response<String>) {
-//                    // 서버 응답이 성공적으로 도착했을 때 호출됩니다.
-//                    if (response.isSuccessful) {
-//                        val result = response.body()
-//                        welcomeText.text = "서버 응답: $result"
-//                        Toast.makeText(this@MainActivity, "서버 연결 성공: $result", Toast.LENGTH_SHORT).show()
-//                    } else {
-//                        // 서버 응답이 실패했을 경우 (예: 404 Not Found, 500 Internal Server Error)
-//                        welcomeText.text = "서버 응답 실패: ${response.code()}"
-//                        Toast.makeText(this@MainActivity, "서버 응답 실패: ${response.code()}", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<String>, t: Throwable) {
-//                    // 네트워크 오류 등으로 인해 요청이 실패했을 때 호출됩니다.
-//                    welcomeText.text = "네트워크 오류: ${t.message}"
-//                    Toast.makeText(this@MainActivity, "네트워크 오류: ${t.message}", Toast.LENGTH_SHORT).show()
-//                }
-//            })
-//        }
+        // 5초마다 이미지 변경
+        startImageRotationWithAnimation()
 
         buttonStart.setOnClickListener {
 
@@ -99,68 +74,109 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+
+        // 버튼 이벤트들
+
+
+        buttonEditorLogin.setOnClickListener {
+            // 다음 화면으로 이동(새 액티비트 시작)
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
         buttonLogin.setOnClickListener { // 로그인 버튼
             val userId = editTextUserId.text.toString()
             val userPw = editTextPassword.text.toString()
 
             val loginRequest = LoginRequest(userId, userPw)
 
-            RetrofitClient.instance.loginUser(loginRequest).enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    if (response.isSuccessful) {
-                        val loginResponse = response.body()
-                        if (loginResponse?.success == true) {
-                            val user = loginResponse.user
-                            //welcomeText.text = "${user?.name}님, ${user?.role}으로 로그인 성공!"
-                            //Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+            RetrofitClient.instance.loginUser(loginRequest)
+                .enqueue(object : Callback<LoginResponse> {
+                    override fun onResponse(
+                        call: Call<LoginResponse>,
+                        response: Response<LoginResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val loginResponse = response.body()
+                            if (loginResponse?.success == true) {
+                                val user = loginResponse.user
+                                //welcomeText.text = "${user?.name}님, ${user?.role}으로 로그인 성공!"
+                                //Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
 
-                            // SharedPreferences에 사용자 정보 저장
-                            val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
-                            val editor = sharedPreferences.edit()
-                            editor.putString("userId", user?.id)
-                            editor.putString("userName", user?.name)
-                            editor.putString("userRole", user?.role)
-                            editor.apply() // 비동기 저장 (editor.commit()은 동기 저장)
+                                // SharedPreferences에 사용자 정보 저장
+                                val sharedPreferences =
+                                    getSharedPreferences("user_info", Context.MODE_PRIVATE)
+                                val editor = sharedPreferences.edit()
+                                editor.putString("userId", user?.id)
+                                editor.putString("userName", user?.name)
+                                editor.putString("userRole", user?.role)
+                                editor.apply() // 비동기 저장 (editor.commit()은 동기 저장)
 
-                            // 다음 화면으로 이동(새 액티비트 시작)
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                                // 다음 화면으로 이동(새 액티비트 시작)
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                //welcomeText.text = "로그인 실패: ${loginResponse?.message}"
+                                Toast.makeText(this@LoginActivity, "로그인 실패", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                         } else {
-                            //welcomeText.text = "로그인 실패: ${loginResponse?.message}"
-                            Toast.makeText(this@LoginActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                            val errorBody = response.errorBody()?.string()
+                            val errorMessage =
+                                "로그인 요청 실패: ${response.code()} - ${errorBody ?: "알 수 없는 오류"}"
+                            //welcomeText.text = errorMessage
+                            Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT)
+                                .show()
                         }
-                    } else {
-                        val errorBody = response.errorBody()?.string()
-                        val errorMessage = "로그인 요청 실패: ${response.code()} - ${errorBody ?: "알 수 없는 오류"}"
-                        //welcomeText.text = errorMessage
-                        Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT).show()
                     }
-                }
 
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    //welcomeText.text = "네트워크 오류: ${t.message}"
-                    Toast.makeText(this@LoginActivity, "네트워크 오류", Toast.LENGTH_SHORT).show()
-                }
-            })
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        //welcomeText.text = "네트워크 오류: ${t.message}"
+                        Toast.makeText(this@LoginActivity, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                    }
+                })
         }
+        
+        
+        // 소셜 로그인 버튼 이벤트 설정
+        buttonLoginGoogle.setOnClickListener {
+            // 구글 로그인 로직
+        }
+        buttonLoginKakao.setOnClickListener {
+            // 카카오 로그인 로직
+        }
+
     }
 
-    private fun startImageRotation() {
+    private fun startImageRotationWithAnimation() {
         handler.post(object : Runnable {
             override fun run() {
-                // 현재 인덱스의 이미지로 설정
-                backgroundImageView.setImageResource(images[currentIndex])
+                // 현재 이미지를 페이드 아웃
+                backgroundImageView.animate()
+                    .alpha(0f) // 투명도를 0으로
+                    .setDuration(ANIMATION_DURATION / 2) // 페이드 아웃 시간 (총 시간의 절반)
+                    .withEndAction {
+                        // 페이드 아웃이 끝난 후 다음 이미지로 변경하고 페이드 인
+                        currentIndex = (currentIndex + 1) % images.size
+                        backgroundImageView.setImageResource(images[currentIndex])
 
-                // 다음 인덱스 계산
-                currentIndex = (currentIndex + 1) % images.size
+                        backgroundImageView.animate()
+                            .alpha(1f) // 투명도를 1 (불투명)으로
+                            .setDuration(ANIMATION_DURATION / 2) // 페이드 인 시간
+                            .start()
+                    }
+                    .start()
 
-                // 10초 후에 다시 실행
-                handler.postDelayed(this, 10000)
+                // 다음 이미지 전환을 위한 딜레이 (애니메이션 시간 고려)
+                handler.postDelayed(this, IMAGE_ROTATION_DELAY)
             }
         })
     }
-//ㅋㅋ
+
+    //ㅋㅋ
     override fun onDestroy() {
         super.onDestroy()
         // 핸들러 작업 중단

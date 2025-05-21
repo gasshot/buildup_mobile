@@ -1,11 +1,12 @@
 package com.example.buildup
 
+import PagerAdapter
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.viewpager2.widget.ViewPager2
 import androidx.appcompat.app.AppCompatActivity
-import com.example.buildup.JoinActivity
 import com.example.buildup.databinding.ActivityMainBinding
 
 
@@ -20,12 +21,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE)
-        val savedUserId = sharedPreferences.getString("userId", null)
-        val savedUserName = sharedPreferences.getString("userName", null)
-        val savedUserRole = sharedPreferences.getString("userRole", null)
+        val viewPager: ViewPager2 = findViewById(R.id.viewPager)
+        val adapter = PagerAdapter(this)
+        viewPager.adapter = adapter
+
+//        val sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE)
+//        val savedUserId = sharedPreferences.getString("userId", null)
+//        val savedUserName = sharedPreferences.getString("userName", null)
+//        val savedUserRole = sharedPreferences.getString("userRole", null)
 
         // binding.textViewUserName.text = "사용자 이름: $savedUserName"
+
 
         // 로그아웃 버튼 동작
         binding.buttonLogout.setOnClickListener {
