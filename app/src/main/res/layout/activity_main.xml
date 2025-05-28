@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -27,13 +27,14 @@
 
     <ImageButton
         android:id="@+id/buttonLogout"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="312dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="672dp"
         android:background="@drawable/bg_ib_capture_ripple"
+        android:contentDescription="Logout button"
         android:drawablePadding="0dp"
         android:gravity="center"
         android:padding="0dp"
@@ -43,7 +44,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TouchTargetSizeCheck" />
+
 
     <View
         android:id="@+id/view"
@@ -57,6 +60,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogout" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="340dp"
+        android:layout_height="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
 
     <TextView
         android:id="@+id/textView"
@@ -119,35 +133,48 @@
         app:layout_constraintStart_toStartOf="@+id/analysisResultBtn"
         app:layout_constraintTop_toBottomOf="@+id/analysisResultBtn" />
 
-    <ImageButton
+    <FrameLayout
         android:id="@+id/chatBotBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="53dp"
-        android:background="@drawable/bg_ib_chatbot_ripple"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="ChatBot"
-        android:textColor="#4CAF50"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/sphered_shadow_background_white"
+        android:clickable="true"
+        android:contentDescription="ChatBot button"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toEndOf="@+id/analysisResultBtn"
-        app:layout_constraintTop_toTopOf="@+id/analysisResultBtn"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/analysisBtn">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="340dp"
-        android:layout_height="280dp"
+        <!-- 작은 이미지 -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/right_arrow" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="48dp"
+        android:text="Q&amp;A 챗봇"
+        android:textAlignment="center"
+        android:textColor="#646464"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintTop_toBottomOf="@+id/chatBotBtn" />
 
     <!--버튼들-->
 
