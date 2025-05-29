@@ -55,6 +55,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson 컨버터 추가
     // CardView 라이브러리 추가 (최신 버전으로 확인해서 사용하세요)
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

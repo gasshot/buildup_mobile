@@ -80,9 +80,57 @@ class LoginActivity : AppCompatActivity() {
 
         buttonEditorLogin.setOnClickListener {
             // 다음 화면으로 이동(새 액티비트 시작)
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            val userId = "kanginoh"
+            val userPw = "12345"
+
+            val loginRequest = LoginRequest(userId, userPw)
+
+            RetrofitClient.instance.loginUser(loginRequest)
+                .enqueue(object : Callback<LoginResponse> {
+                    override fun onResponse(
+                        call: Call<LoginResponse>,
+                        response: Response<LoginResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val loginResponse = response.body()
+                            if (loginResponse?.success == true) {
+                                val user = loginResponse.user
+                                //welcomeText.text = "${user?.name}님, ${user?.role}으로 로그인 성공!"
+                                //Toast.makeText(this@MainActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+
+                                // SharedPreferences에 사용자 정보 저장
+                                val sharedPreferences =
+                                    getSharedPreferences("user_info", Context.MODE_PRIVATE)
+                                val editor = sharedPreferences.edit()
+                                editor.putString("userId", user?.id)
+                                editor.putString("userName", user?.name)
+                                editor.putString("userRole", user?.role)
+                                editor.apply() // 비동기 저장 (editor.commit()은 동기 저장)
+
+                                // 다음 화면으로 이동(새 액티비트 시작)
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                //welcomeText.text = "로그인 실패: ${loginResponse?.message}"
+                                Toast.makeText(this@LoginActivity, "로그인 실패", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        } else {
+                            val errorBody = response.errorBody()?.string()
+                            val errorMessage =
+                                "로그인 요청 실패: ${response.code()} - ${errorBody ?: "알 수 없는 오류"}"
+                            //welcomeText.text = errorMessage
+                            Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        //welcomeText.text = "네트워크 오류: ${t.message}"
+                        Toast.makeText(this@LoginActivity, "네트워크 오류", Toast.LENGTH_SHORT).show()
+                    }
+                })
         }
 
 

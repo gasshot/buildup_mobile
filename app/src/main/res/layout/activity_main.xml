@@ -20,13 +20,13 @@
         android:textColor="#4CAF50"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/buttonLogout"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMypage"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/buttonLogout"
+        android:id="@+id/buttonMypage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="312dp"
@@ -59,7 +59,7 @@
         app:layout_constraintBottom_toTopOf="@id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogout" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMypage" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <Button
-        android:id="@+id/analysisBtn"
+        android:id="@+id/pastSkinAnalysisRecordBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -103,52 +103,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/analysisResultBtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_shadow_background_white"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="내 피부 분석 결과 보기"
-        android:textColor="#4CAF50"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/analysisBtn"
-        app:layout_constraintStart_toStartOf="@+id/analysisBtn"
-        app:layout_constraintTop_toBottomOf="@+id/analysisBtn" />
+<!--    <Button-->
+<!--        android:id="@+id/analysisResultBtn"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/rounded_shadow_background_white"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingRight="20dp"-->
+<!--        android:text="내 피부 분석 결과 보기"-->
+<!--        android:textColor="#4CAF50"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/analysisBtn"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/analysisBtn"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/analysisBtn" />-->
+
 
     <Button
         android:id="@+id/recommandBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_shadow_background_white"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="추천 제품 다시 보기"
         android:textColor="#4CAF50"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/analysisResultBtn"
-        app:layout_constraintStart_toStartOf="@+id/analysisResultBtn"
-        app:layout_constraintTop_toBottomOf="@+id/analysisResultBtn" />
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="572dp" />
 
     <FrameLayout
         android:id="@+id/chatBotBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/sphered_shadow_background_white"
         android:clickable="true"
         android:contentDescription="ChatBot button"
         android:focusable="true"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toEndOf="@+id/analysisResultBtn"
-        app:layout_constraintTop_toTopOf="@+id/analysisBtn">
+        app:layout_constraintStart_toEndOf="@+id/pastSkinAnalysisRecordBtn"
+        app:layout_constraintTop_toBottomOf="@+id/view">
 
         <!-- 작은 이미지 -->
         <ImageView
@@ -160,12 +157,11 @@
             android:src="@drawable/right_arrow" />
     </FrameLayout>
 
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginBottom="48dp"
         android:text="Q&amp;A 챗봇"
         android:textAlignment="center"
@@ -174,7 +170,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chatBotBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/chatBotBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!--버튼들-->
 

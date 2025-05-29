@@ -34,30 +34,21 @@ class MainActivity : AppCompatActivity() {
 
 
         // 로그아웃 버튼 동작
-        binding.buttonLogout.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("경고")
-                .setMessage("로그아웃할까요?")
-                .setPositiveButton("예") { dialog, _ ->
-                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                .setNegativeButton("아니오") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .show()
-        }
-
-        // 분석 버튼 클릭 시 이미지 선택 Intent 호출
-        binding.analysisBtn.setOnClickListener {
-            Log.d("일단 테스트", "이미지 저장")
-
-            // 다음 화면으로 이동(분석화면)
-            val intent = Intent(this@MainActivity, AnalysisActivity::class.java)
+        binding.buttonMypage.setOnClickListener {
+            val intent = Intent(this@MainActivity, MypageActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+//        // 분석 버튼 클릭 시 이미지 선택 Intent 호출
+//        binding.analysisBtn.setOnClickListener {
+//            Log.d("일단 테스트", "이미지 저장")
+//
+//            // 다음 화면으로 이동(분석화면)
+//            val intent = Intent(this@MainActivity, AnalysisActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 
 }
