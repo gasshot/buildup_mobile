@@ -1,4 +1,4 @@
-package com.example.buildup
+package com.example.buildup.data
 
 data class LoginRequest(
     val user_id: String,

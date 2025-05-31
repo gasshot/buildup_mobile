@@ -1,5 +1,11 @@
-package com.example.buildup
+package com.example.buildup.api
 
+import com.example.buildup.data.LoginResponse
+import com.example.buildup.data.CheckIDRequest
+import com.example.buildup.data.CheckIDResponse
+import com.example.buildup.data.JoinRequest
+import com.example.buildup.data.JoinResponse
+import com.example.buildup.data.LoginRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,4 +20,7 @@ interface ApiService {
 
     @POST("/user/join") // 회원가입 엔드포인트 (POST 방식)
     fun joinUser(@Body joinData: JoinRequest): Call<JoinResponse> // 요청 데이터와 응답 데이터 타입 정의
+
+    @POST("/user/check-id") // 아이디 확인 엔드포인트 (POST 방식)
+    fun checkID(@Body checkData: CheckIDRequest): Call<CheckIDResponse> // 요청 데이터와 응답 데이터 타입 정의
 }

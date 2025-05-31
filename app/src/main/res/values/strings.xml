@@ -1,12 +1,23 @@
 <resources>
-    <string name="app_name">buildup</string>
+    <string name="app_name">Skinthera</string>
     <string name="success_join">회원가입이 성공적으로 완료되었습니다.</string>
     <string name="error_all_fields_required">모든 필드를 입력해주세요.</string>
     <string name="error_password_mismatch">비밀번호가 일치하지 않습니다.</string>
     <string name="error_invalid_email">유효하지 않은 이메일 형식입니다.</string>
-    <string name="error_password_strength">비밀번호는 최소 8자 이상이고, 특수 문자를 포함해야 합니다.</string>
+    <string name="error_password_strength">비밀번호는 최소 8자 이상이고, 영문, 숫자, 특수문자를 포함해야 합니다.</string>
     <string name="loading_message">잠시만 기다려주세요...</string>
     <string name="error_join_failed">회원가입에 실패했습니다.</string>
     <string name="error_join_request_failed">회원가입 요청 실패: %1$d - %2$s</string>
     <string name="error_network">네트워크 오류가 발생했습니다.</string>
+
+    <string name="error_empty_id">아이디를 입력해 주세요.</string>
+    <string name="error_empty_password">비밀번호를 입력해 주세요.</string>
+    <string name="error_id_already_taken">이미 사용 중인 아이디입니다.</string>
+    <string name="id_is_available">사용 가능한 아이디입니다.</string>
+    <string name="error_server_response">서버 응답 오류가 발생했습니다.</string>
+    <string name="error_network_connection">네트워크 연결에 문제가 발생했습니다. 다시 시도해 주세요.</string>
+    <string name="error_nickname_empty">닉네임을 입력해 주세요.</string>
+    <string name="error_nickname_invalid">닉네임은 한글 6글자 이내로 입력해야 합니다.</string>
+    <string name="kakao_app_key">e6e454a1f0c187fb8abf3b764b1a5ce3</string>
+    <string name="scheme_kakao_app_key">kakaoe6e454a1f0c187fb8abf3b764b1a5ce3</string>
 </resources>
