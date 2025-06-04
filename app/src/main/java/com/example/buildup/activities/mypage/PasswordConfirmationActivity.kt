@@ -10,13 +10,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildup.MypageActivity
 import com.example.buildup.R
-import com.example.buildup.api.RetrofitClient
+import com.example.buildup.api.ApiManager
 import com.example.buildup.data.CheckPWRequest
-import com.example.buildup.data.CheckPWResponse
 import com.example.buildup.databinding.ActivityPasswordConfirmationBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class PasswordConfirmationActivity : AppCompatActivity() {
 
@@ -37,8 +34,6 @@ class PasswordConfirmationActivity : AppCompatActivity() {
             finish()
             return
         }
-
-
 
         binding.buttonConfirm.setOnClickListener {
             val enteredPassword = binding.editTextPassword.text.toString()
@@ -75,24 +70,17 @@ class PasswordConfirmationActivity : AppCompatActivity() {
     }
 
     private fun performCheckPW(checkRequest: CheckPWRequest) {
-        RetrofitClient.instance.checkPW(checkRequest)
-            .enqueue(object : Callback<CheckPWResponse> {
-                override fun onResponse(call: Call<CheckPWResponse>, response: Response<CheckPWResponse>) {
-                    if (response.isSuccessful && response.body()?.success == true) {
-                        //Toast.makeText(this@PasswordConfirmationActivity, "비밀번호 확인 완료!", Toast.LENGTH_SHORT).show()
-                        navigateToMyProfileActivity()
-                    } else {
-                        // 유효성 검사 실패 시 UI 오류 표시
-                        binding.editTextPassword.setBackgroundResource(R.drawable.edittext_error_box) // 오류 테두리
-                        binding.editTextPassword.setTextColor(Color.RED) // 텍스트 색상 변경
-                        Toast.makeText(this@PasswordConfirmationActivity, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<CheckPWResponse>, t: Throwable) {
-                    Toast.makeText(this@PasswordConfirmationActivity, "네트워크 연결 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
-                }
-            })
+        ApiManager.checkPW(checkRequest) { success ->
+            if (success) {
+                // 비밀번호 확인 성공
+                navigateToMyProfileActivity()
+            } else {
+                // 실패 처리 UI
+                binding.editTextPassword.setBackgroundResource(R.drawable.edittext_error_box)
+                binding.editTextPassword.setTextColor(Color.RED)
+                Toast.makeText(this@PasswordConfirmationActivity, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 

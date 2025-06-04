@@ -63,18 +63,18 @@ class ConfirmDialog private constructor(
         }
 
         // 확인 버튼 텍스트 설정
-        binding.dialogYesBtn.text = buttonText
+        binding.confirmButton.text = buttonText
 
         // 취소 버튼이 없는 경우 처리
         if (id == -1) {
-            binding.dialogNoBtn.visibility = View.GONE
+            binding.cancelButton.visibility = View.GONE
         }
 
         // 버튼 클릭 리스너
-        binding.dialogNoBtn.setOnClickListener {
+        binding.cancelButton.setOnClickListener {
             dismiss()
         }
-        binding.dialogYesBtn.setOnClickListener {
+        binding.confirmButton.setOnClickListener {
             onConfirm(id)
             dismiss()
         }
@@ -84,7 +84,7 @@ class ConfirmDialog private constructor(
         super.onStart()
         // 다이얼로그 크기 조정
         dialog?.window?.setLayout(
-            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            (resources.displayMetrics.widthPixels * 0.95).toInt(),
             LayoutParams.WRAP_CONTENT
         )
     }

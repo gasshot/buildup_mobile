@@ -8,6 +8,10 @@ import com.example.buildup.data.CheckPWResponse
 import com.example.buildup.data.JoinRequest
 import com.example.buildup.data.JoinResponse
 import com.example.buildup.data.LoginRequest
+import com.example.buildup.data.ServerResponse
+import com.example.buildup.data.UpdateNicknameRequest
+import com.example.buildup.data.UpdatePWRequest
+import com.example.buildup.data.UpdatePWResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,4 +32,10 @@ interface ApiService {
 
     @POST("/user/check-pw") // 비밀번호 확인 엔드포인트 (POST 방식)
     fun checkPW(@Body checkData: CheckPWRequest): Call<CheckPWResponse> // 요청 데이터와 응답 데이터 타입 정의
+
+    @POST("/user/update-pw") // 비밀번호 수정 엔드포인트 (POST 방식)
+    fun updatePW(@Body checkData: UpdatePWRequest): Call<UpdatePWResponse> // 요청 데이터와 응답 데이터 타입 정의
+
+    @POST("/user/update-nickname") // 닉네임 수정 엔드포인트 (POST 방식)
+    fun updatePW(@Body checkData: UpdateNicknameRequest): Call<ServerResponse> // 요청 데이터와 응답 데이터 타입 정의
 }

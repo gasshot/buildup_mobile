@@ -13,7 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildup.activities.join.Join1Activity
-import com.example.buildup.api.RetrofitClient
+import com.example.buildup.api.ApiManager
 import com.example.buildup.data.KakaoLoginRequest
 import com.example.buildup.data.LoginRequest
 import com.example.buildup.data.LoginResponse
@@ -22,11 +22,6 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-
-// 비동기 통신 임포트
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 // TODO: User 데이터 클래스 정의 (예시)
 // data class User(val id: String?, val name: String?, val role: String?)
@@ -199,30 +194,16 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    // --- 일반/에디터 로그인 처리 공통 함수 ---
     private fun performLogin(loginRequest: LoginRequest) {
-        RetrofitClient.instance.loginUser(loginRequest)
-            .enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    if (response.isSuccessful) {
-                        val loginResponse = response.body()
-                        if (loginResponse?.success == true) {
-                            val user = loginResponse.user
-                            handleLoginSuccess(user)
-                        } else {
-                            Toast.makeText(this@LoginActivity, "로그인 실패: ${loginResponse?.message ?: "알 수 없는 오류"}", Toast.LENGTH_SHORT).show()
-                        }
-                    } else {
-                        val errorBody = response.errorBody()?.string()
-                        val errorMessage = "로그인 요청 실패: ${response.code()} - ${errorBody ?: "알 수 없는 오류"}"
-                        Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT).show()
-                    }
+        ApiManager.loginUser(loginRequest) { success, user, errorMessage ->
+            runOnUiThread {
+                if (success) {
+                    handleLoginSuccess(user!!)
+                } else {
+                    Toast.makeText(this@LoginActivity, "로그인 실패: $errorMessage", Toast.LENGTH_SHORT).show()
                 }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Toast.makeText(this@LoginActivity, "네트워크 오류: ${t.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
+            }
+        }
     }
 
     // --- 로그인 성공 후 공통 처리 함수 ---
