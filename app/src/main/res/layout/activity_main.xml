@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="222dp"
         android:text="SkinThera"
         android:textColor="#4CAF50"
@@ -44,84 +44,67 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.244"
         tools:ignore="TouchTargetSizeCheck" />
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="360dp"
-        android:layout_height="300dp"
-        android:layout_margin="8dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_shadow_background"
-        app:layout_constraintBottom_toTopOf="@id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMypage" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="340dp"
         android:layout_height="280dp"
+        android:elevation="8dp"
+        android:background="@drawable/viewpager_background"
+        android:layout_marginBottom="472dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    <Button-->
+    <!--        android:id="@+id/analysisResultBtn"-->
+    <!--        android:layout_width="200dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:background="@drawable/rounded_shadow_background_white"-->
+    <!--        android:paddingLeft="20dp"-->
+    <!--        android:paddingRight="20dp"-->
+    <!--        android:text="내 피부 분석 결과 보기"-->
+    <!--        android:textColor="#4CAF50"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/analysisBtn"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/analysisBtn"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/analysisBtn" />-->
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginTop="32dp"
         android:text="당신의 피부타입은?"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/viewPager" />
 
     <Button
         android:id="@+id/pastSkinAnalysisRecordBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="148dp"
         android:background="@drawable/rounded_shadow_background_white"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="내 피부 분석하기"
         android:textColor="#4CAF50"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/chatBotBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-<!--    <Button-->
-<!--        android:id="@+id/analysisResultBtn"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:background="@drawable/rounded_shadow_background_white"-->
-<!--        android:paddingLeft="20dp"-->
-<!--        android:paddingRight="20dp"-->
-<!--        android:text="내 피부 분석 결과 보기"-->
-<!--        android:textColor="#4CAF50"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/analysisBtn"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/analysisBtn"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/analysisBtn" />-->
-
 
     <Button
         android:id="@+id/recommandBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rounded_shadow_background_white"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -136,16 +119,14 @@
         android:id="@+id/chatBotBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/sphered_shadow_background_white"
         android:clickable="true"
         android:contentDescription="ChatBot button"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pastSkinAnalysisRecordBtn"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <!-- 작은 이미지 -->
         <ImageView
@@ -161,17 +142,16 @@
         android:id="@+id/textView4"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="8dp"
         android:text="Q&amp;A 챗봇"
         android:textAlignment="center"
         android:textColor="#646464"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chatBotBtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/chatBotBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/chatBotBtn"
+        app:layout_constraintTop_toBottomOf="@+id/chatBotBtn" />
 
     <!--버튼들-->
 

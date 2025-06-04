@@ -2,9 +2,11 @@ package com.example.buildup
 
 import PagerAdapter
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import androidx.appcompat.app.AppCompatActivity
 import com.example.buildup.databinding.ActivityMainBinding
@@ -25,12 +27,15 @@ class MainActivity : AppCompatActivity() {
         val adapter = PagerAdapter(this)
         viewPager.adapter = adapter
 
-//        val sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE)
-//        val savedUserId = sharedPreferences.getString("userId", null)
-//        val savedUserName = sharedPreferences.getString("userName", null)
-//        val savedUserRole = sharedPreferences.getString("userRole", null)
+        val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
 
-        // binding.textViewUserName.text = "사용자 이름: $savedUserName"
+        val userId = sharedPreferences.getString("userId", null)
+        val userName = sharedPreferences.getString("userName", null)
+//        val userEmail = sharedPreferences.getString("userEmail", null)
+//        val userSex = sharedPreferences.getString("userSex", null)
+//        val userBirthdate = sharedPreferences.getString("userBirthdate", null)
+//        val userJoinDate = sharedPreferences.getString("userJoinDate", null)
+//        val userRole = sharedPreferences.getString("userRole", null)
 
 
         // 로그아웃 버튼 동작

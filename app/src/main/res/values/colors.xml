@@ -3,4 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="skinthera">#FF4CAF50</color>
+    <color name="gray">#FF909090</color>
+    <color name="text_01">#FF000000</color>
+    <color name="text_02">#FF000000</color>
+    <color name="gray_700">#FFE0E0E0</color>
+    <color name="Jred_500">#FFFF0000</color>
 </resources>

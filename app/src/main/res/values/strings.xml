@@ -20,4 +20,5 @@
     <string name="error_nickname_invalid">닉네임은 한글 6글자 이내로 입력해야 합니다.</string>
     <string name="kakao_app_key">e6e454a1f0c187fb8abf3b764b1a5ce3</string>
     <string name="scheme_kakao_app_key">kakaoe6e454a1f0c187fb8abf3b764b1a5ce3</string>
+    <string name="skin_thera">SKIN THERA</string>
 </resources>

@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
 
     // FastAPI 서버의 배포된 주소
-    private const val BASE_URL = "https://exotic-broadly-eel.ngrok-free.app/"
+    //private const val BASE_URL = "https://exotic-broadly-eel.ngrok-free.app/"
+    private const val BASE_URL = "http://211.245.5.206:8000/"
 
     // Interceptor를 사용하여 요청 헤더에 ngrok-skip-browser-warning 추가
     private val interceptor = Interceptor { chain ->

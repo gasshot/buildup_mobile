@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.mypage.PasswordConfirmationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.mypage.MyProfileActivity"
             android:exported="false" />
         <activity
@@ -63,6 +66,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.start.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

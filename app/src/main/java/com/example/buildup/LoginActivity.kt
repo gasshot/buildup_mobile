@@ -67,9 +67,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // 🌟🌟🌟 바로 여기에 scopes를 정의하고 사용합니다! 🌟🌟🌟
-        val scopes = listOf("account_email", "gender", "birthday", "birthyear") // 필요한 동의 항목 지정
-
         // UI 요소 찾기
         welcomeText = findViewById(R.id.welcomeText)
         buttonStart = findViewById(R.id.signupText)
@@ -230,13 +227,17 @@ class LoginActivity : AppCompatActivity() {
 
     // --- 로그인 성공 후 공통 처리 함수 ---
     private fun handleLoginSuccess(user: User?) {
-        Toast.makeText(this@LoginActivity, "${user?.name ?: "사용자"}님, 로그인 성공!", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this@LoginActivity, "${user?.name ?: "사용자"}님, 로그인 성공!", Toast.LENGTH_SHORT).show()
 
         // SharedPreferences에 사용자 정보 저장
         val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("userId", user?.id)
-        editor.putString("userName", user?.name)
+        editor.putString("userName", user?.nickname)
+        editor.putString("userEmail", user?.email)
+        editor.putString("userSex", user?.sex)
+        editor.putString("userBirthdate", user?.birthdate)
+        editor.putString("userJoinDate", user?.joinDate)
         editor.putString("userRole", user?.role)
         editor.apply()
 
