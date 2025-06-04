@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.mypage.MyProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdditionalInfoActivity"
             android:exported="false" />
         <activity
