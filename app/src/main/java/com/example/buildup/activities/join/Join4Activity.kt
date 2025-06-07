@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildup.LoginActivity
 import com.example.buildup.R
 import com.example.buildup.databinding.ActivityJoin4Binding
 import java.util.Calendar
@@ -18,6 +19,14 @@ class Join4Activity : AppCompatActivity() {
         // 뷰 바인딩 객체 생성 및 setContentView에 적용
         binding = ActivityJoin4Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 로그인 화면으로 돌아가기 리스너
+        binding.buttonReturnToLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // 현재 액티비티 종료
+
+        }
 
         // 이전 액티비티에서 받은 데이터
         val id = intent.getStringExtra("user_id")

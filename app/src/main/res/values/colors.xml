@@ -3,9 +3,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="skinthera">#FF4CAF50</color>
+    <color name="skinthera_back">#FFE8FFE9</color>
+    <color name="yAxisLabelColor">#5D8960</color>
     <color name="gray">#FF909090</color>
     <color name="text_01">#FF000000</color>
     <color name="text_02">#FF000000</color>
     <color name="gray_700">#FFE0E0E0</color>
     <color name="Jred_500">#FFFF0000</color>
+    <color name="skin_back">#FFF7FFF7</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="primary">#4CAF50</color>
+    <color name="secondary">#2196F3</color>
 </resources>

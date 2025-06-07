@@ -1,5 +1,6 @@
 package com.example.buildup.api
 
+import com.example.buildup.data.AnalysisResponse
 import com.example.buildup.data.LoginResponse
 import com.example.buildup.data.CheckIDRequest
 import com.example.buildup.data.CheckIDResponse
@@ -12,10 +13,14 @@ import com.example.buildup.data.ServerResponse
 import com.example.buildup.data.UpdateNicknameRequest
 import com.example.buildup.data.UpdatePWRequest
 import com.example.buildup.data.UpdatePWResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface ApiService {
     @GET("/test") // FastAPI 서버의 '/test' 엔드포인트에 GET 요청을 보냅니다.
@@ -38,4 +43,11 @@ interface ApiService {
 
     @POST("/user/update-nickname") // 닉네임 수정 엔드포인트 (POST 방식)
     fun updatePW(@Body checkData: UpdateNicknameRequest): Call<ServerResponse> // 요청 데이터와 응답 데이터 타입 정의
+
+    @Multipart
+    @POST("/images/upload-and-analyze")
+    fun uploadImage(
+        @Part file: MultipartBody.Part,
+        @Part("user_id") userId: RequestBody
+    ): Call<AnalysisResponse>
 }

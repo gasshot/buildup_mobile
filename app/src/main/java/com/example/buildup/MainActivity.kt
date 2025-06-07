@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -27,33 +25,37 @@ class MainActivity : AppCompatActivity() {
         val adapter = PagerAdapter(this)
         viewPager.adapter = adapter
 
+        // SharedPreferences에서 사용자 정보 불러오기
         val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getString("userId", "N/A")
+        val userNickname = sharedPreferences.getString("userName", "N/A")
 
-        val userId = sharedPreferences.getString("userId", null)
-        val userName = sharedPreferences.getString("userName", null)
-//        val userEmail = sharedPreferences.getString("userEmail", null)
-//        val userSex = sharedPreferences.getString("userSex", null)
-//        val userBirthdate = sharedPreferences.getString("userBirthdate", null)
-//        val userJoinDate = sharedPreferences.getString("userJoinDate", null)
-//        val userRole = sharedPreferences.getString("userRole", null)
+        binding.textView6.text = "${userNickname}님"
 
-
-        // 로그아웃 버튼 동작
+        // 마이페이지 버튼 동작
         binding.buttonMypage.setOnClickListener {
             val intent = Intent(this@MainActivity, MypageActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-//        // 분석 버튼 클릭 시 이미지 선택 Intent 호출
-//        binding.analysisBtn.setOnClickListener {
-//            Log.d("일단 테스트", "이미지 저장")
-//
-//            // 다음 화면으로 이동(분석화면)
-//            val intent = Intent(this@MainActivity, AnalysisActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
+        binding.recommendBtn.setOnClickListener {
+            // 다음 화면으로 이동(분석화면)
+            val intent = Intent(this@MainActivity, ResultActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // 분석 버튼 클릭 시 이미지 선택 Intent 호출
+        binding.AnalysisBtn.setOnClickListener {
+
+            // 다음 화면으로 이동(분석화면)
+            val intent = Intent(this@MainActivity, AnalysisActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
 }

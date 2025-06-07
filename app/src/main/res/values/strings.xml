@@ -9,6 +9,7 @@
     <string name="error_join_failed">회원가입에 실패했습니다.</string>
     <string name="error_join_request_failed">회원가입 요청 실패: %1$d - %2$s</string>
     <string name="error_network">네트워크 오류가 발생했습니다.</string>
+    <string name="image_description">이미지에 대한 설명을 여기에 입력하세요</string>
 
     <string name="error_empty_id">아이디를 입력해 주세요.</string>
     <string name="error_empty_password">비밀번호를 입력해 주세요.</string>

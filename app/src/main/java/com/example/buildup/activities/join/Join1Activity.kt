@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildup.LoginActivity
 import com.example.buildup.data.CheckIDRequest
 import com.example.buildup.data.CheckIDResponse
 import com.example.buildup.R
@@ -28,6 +29,14 @@ class Join1Activity : AppCompatActivity() {
         binding = ActivityJoin1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 로그인 화면으로 돌아가기 리스너
+        binding.buttonReturnToLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // 현재 액티비티 종료
+
+        }
+        
         // ID 입력 필드 변경 리스너
         binding.editTextJoinId.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

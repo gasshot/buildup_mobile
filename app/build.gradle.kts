@@ -53,6 +53,11 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson 컨버터 추가
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.activity:activity-ktx:1.7.2") // 최신 버전으로 맞추세요
+    implementation("androidx.fragment:fragment-ktx:1.5.7") // fragment-ktx도 같이 쓰면 좋아요
+
     // CardView 라이브러리 추가 (최신 버전으로 확인해서 사용하세요)
     implementation("androidx.cardview:cardview:1.0.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")

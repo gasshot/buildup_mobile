@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.buildup.LoginActivity
 import com.example.buildup.R
 import com.example.buildup.databinding.ActivityJoin2Binding
 
@@ -27,6 +28,14 @@ class Join2Activity : AppCompatActivity() {
         // 기존의 setContentView(R.layout.activity_join2)는 제거되었습니다.
         binding = ActivityJoin2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 로그인 화면으로 돌아가기 리스너
+        binding.buttonReturnToLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // 현재 액티비티 종료
+
+        }
 
         // 1. Spinner를 가져오기
         val spinner: Spinner = binding.spinnerEmailDomain

@@ -22,6 +22,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/buttonReturnToLogin"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="ReturnToLogin button"
+        android:padding="0dp"
+        android:src="@drawable/close"
+        android:tintMode="src_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/gray"
+        tools:ignore="TouchTargetSizeCheck" />
+
     <TextView
         android:id="@+id/infoText"
         android:layout_width="210dp"
@@ -125,17 +141,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/returnToLoginBtn"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/welcomeText"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_ib_chatbot_ripple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

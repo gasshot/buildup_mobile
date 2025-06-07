@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mypage_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MypageActivity">
 
     <!-- 배경을 포함한 사용자 정보 영역 -->
@@ -23,39 +23,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/buttonReturnToMain"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="ReturnToLogin button"
+        android:padding="0dp"
+        android:src="@drawable/close"
+        android:tintMode="src_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/gray"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <FrameLayout
         android:id="@+id/user_info_background"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_shadow_background"
+        android:layout_marginTop="104dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserName">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|left"
-            android:layout_marginTop="32dp"
-            android:text="퍼스널 컬러"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+        <FrameLayout
+            android:id="@+id/user_info_background_inside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="124dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/rounded_shadow_background_white"
+            android:backgroundTint="#F3FDF3">
 
-        <TextView
-            android:id="@+id/tv_user_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|left"
-            android:layout_marginTop="64dp"
-            android:text="피부 타입"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:text="퍼스널 컬러"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/tv_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="64dp"
+                android:text="피부 타입"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </FrameLayout>
     </FrameLayout>
 
     <Button
@@ -75,14 +100,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <GridLayout
         android:id="@+id/grid_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="160dp"
+        android:layout_width="360dp"
+        android:layout_height="336dp"
         android:layout_margin="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:alignmentMode="alignMargins"
         android:columnCount="4"
@@ -90,11 +114,9 @@
         android:rowCount="4"
         app:flow_horizontalAlign="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_info_background">
-
-        <!-- 버튼 1 -->
 
         <LinearLayout
             android:id="@+id/announceBtn"
@@ -109,7 +131,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="36dp"
                 android:layout_height="60dp"
                 android:src="@drawable/announce"
                 tools:ignore="ImageContrastCheck" />
@@ -124,13 +146,12 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- 버튼 2 -->
         <LinearLayout
             android:id="@+id/myProfileBtn"
             android:layout_width="60dp"
             android:layout_height="80dp"
             android:layout_row="0"
-            android:layout_column="1"
+            android:layout_column="2"
             android:layout_margin="12dp"
             android:clickable="true"
             android:focusable="true"
@@ -138,7 +159,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="36dp"
                 android:layout_height="60dp"
                 android:src="@drawable/profile" />
 
@@ -152,13 +173,12 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- 버튼 3 -->
         <LinearLayout
             android:id="@+id/analysisBtn"
             android:layout_width="60dp"
             android:layout_height="80dp"
             android:layout_row="0"
-            android:layout_column="2"
+            android:layout_column="3"
             android:layout_margin="12dp"
             android:clickable="true"
             android:focusable="true"
@@ -181,10 +201,71 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/eventBtn"
             android:layout_width="60dp"
             android:layout_height="80dp"
             android:layout_row="0"
-            android:layout_column="3"
+            android:layout_column="1"
+            android:layout_margin="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="606dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="60dp"
+                android:src="@drawable/event" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="이벤트"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/donationBtn"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_margin="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="606dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="60dp"
+                android:src="@drawable/donation"
+                android:tintMode="src_in"
+                app:tint="@color/skinthera" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="기부하기"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/customServiceBtn"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_row="1"
+            android:layout_column="1"
             android:layout_margin="12dp"
             android:clickable="true"
             android:focusable="true"
@@ -199,7 +280,6 @@
                 android:src="@drawable/cs" />
 
             <TextView
-                android:id="@+id/csBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

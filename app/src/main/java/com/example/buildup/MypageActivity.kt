@@ -21,6 +21,10 @@ class MypageActivity : AppCompatActivity() {
             // 공지사항 버튼 클릭 시 실행될 코드
         }
 
+        binding.announceBtn.setOnClickListener {
+            // 이벤트 버튼 클릭 시 실행될 코드
+        }
+
         binding.myProfileBtn.setOnClickListener {
             navigateToPasswordConfirmationActivity()
         }
@@ -29,9 +33,14 @@ class MypageActivity : AppCompatActivity() {
             Toast.makeText(this@MypageActivity, "피부분석 클릭", Toast.LENGTH_SHORT).show()
         }
 
-        binding.csBtn.setOnClickListener {
+        binding.donationBtn.setOnClickListener {
+
+        }
+
+        binding.customServiceBtn.setOnClickListener {
             // 고객센터 버튼 클릭 시 실행될 코드
         }
+
         binding.logoutBtn.setOnClickListener {
             val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
             sharedPreferences.edit {
@@ -40,6 +49,12 @@ class MypageActivity : AppCompatActivity() {
             }
 
             val intent = Intent(this@MypageActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.buttonReturnToMain.setOnClickListener {
+            val intent = Intent(this@MypageActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
