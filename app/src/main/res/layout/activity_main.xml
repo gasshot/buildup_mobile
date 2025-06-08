@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
-        android:text="SkinThera"
+        android:text="@string/skin_thera"
         android:textColor="#4CAF50"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -38,16 +38,32 @@
         app:layout_constraintTop_toTopOf="@+id/textViewUserName"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <!-- ViewPager2 -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="108dp"
-        android:elevation="8dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="92dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- TabLayout (z축 위로 올림) -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabIndicatorColor="@color/primary"
+        app:tabSelectedTextColor="@color/primary"
+        app:tabTextColor="@color/secondary" />
 
     <TextView
         android:id="@+id/textView"
@@ -55,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="환영합니다."
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPager" />
@@ -66,7 +83,7 @@
         android:layout_marginTop="16dp"
         android:text="Skin Thera"
         android:textColor="@android:color/secondary_text_light"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -83,39 +100,41 @@
 
     <Button
         android:id="@+id/AnalysisBtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="148dp"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/rounded_shadow_background_white"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="내 피부 분석하기"
         android:textColor="#4CAF50"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintBottom_toTopOf="@+id/recommendBtn"
+        app:layout_constraintEnd_toEndOf="@+id/recommendBtn"
+        app:layout_constraintStart_toStartOf="@+id/recommendBtn" />
 
     <Button
         android:id="@+id/recommendBtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="178dp"
         android:background="@drawable/rounded_shadow_background_white"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="추천 제품 다시 보기"
+        android:text="과거 기록 비교 분석하기"
         android:textColor="#4CAF50"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/AnalysisBtn"
-        app:layout_constraintStart_toStartOf="@+id/AnalysisBtn"
-        app:layout_constraintTop_toBottomOf="@+id/AnalysisBtn" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
         android:id="@+id/chatBotBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="148dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/sphered_shadow_background_white"
         android:clickable="true"
@@ -136,13 +155,13 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Q&amp;A 챗봇"
         android:textAlignment="center"
         android:textColor="#646464"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/chatBotBtn"
         app:layout_constraintHorizontal_bias="0.0"

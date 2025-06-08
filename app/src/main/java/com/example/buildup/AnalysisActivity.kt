@@ -17,8 +17,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.buildup.MainActivity
 import com.example.buildup.api.ApiManager
 import com.example.buildup.databinding.ActivityAnalysisBinding
+import com.google.gson.Gson
 
 class AnalysisActivity : AppCompatActivity() {
 
@@ -84,6 +86,9 @@ class AnalysisActivity : AppCompatActivity() {
         }
 
         binding.buttonReturnToMain.setOnClickListener {
+            // 다음 화면으로 이동(분석화면)
+            val intent = Intent(this@AnalysisActivity, MainActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
@@ -92,17 +97,48 @@ class AnalysisActivity : AppCompatActivity() {
             if (uri != null) {
                 val filePath = getRealPathFromUri(uri)
                 if (filePath != null) {
-                    Toast.makeText(this, "분석 시작!", Toast.LENGTH_SHORT).show()
+                    // 로딩 다이얼로그 표시
+                    val loadingDialog = LoadingDialog(this)
+                    loadingDialog.show()
 
-                    ApiManager.uploadAndAnalyzeImage(filePath, userId.toString()) { success, response, error ->
-                        runOnUiThread {
-                            if (success && response != null) {
-                                Toast.makeText(this, "분석 결과: 성공", Toast.LENGTH_LONG).show()
-                            } else {
-                                Log.e("Error", error.toString())
-                                Toast.makeText(this, "분석 실패: $error", Toast.LENGTH_LONG).show()
+                    ApiManager.uploadAndAnalyzeImage(
+                        filePath,
+                        userId.toString()
+                    ) { success, resultMap, error ->
+
+                        // 3초 딜레이 후 실행
+                        binding.analyzeButton.postDelayed({
+                            runOnUiThread {
+                                loadingDialog.dismiss() // 다이얼로그 숨기기
+
+                                if (success && resultMap != null) {
+                                    val intent = Intent(
+                                        this@AnalysisActivity,
+                                        ResultActivity::class.java
+                                    ).apply {
+                                        putExtra(
+                                            "personal_color_tone",
+                                            resultMap["personal_color_tone"] as? String
+                                        )
+                                        putExtra("created_at", resultMap["created_at"] as? String)
+                                        putExtra("s3_url", resultMap["s3_url"] as? String)
+                                        putExtra("requester", resultMap["requester"] as? String)
+
+
+                                        // skin_Analysis는 Map이라 직접 넘기기 어려우니 필요한 경우 JSON 문자열로 변환 후 전달
+                                        putExtra(
+                                            "skin_analysis_json",
+                                            Gson().toJson(resultMap["skin_Analysis"])
+                                        )
+                                    }
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    Log.e("Error", error.toString())
+                                    Toast.makeText(this, "분석 실패: $error", Toast.LENGTH_LONG).show()
+                                }
                             }
-                        }
+                        }, 3000)  // 3초(3000ms) 딜레이
                     }
                 } else {
                     Toast.makeText(this, "파일 경로를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()

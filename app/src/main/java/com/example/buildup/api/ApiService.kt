@@ -10,6 +10,8 @@ import com.example.buildup.data.JoinRequest
 import com.example.buildup.data.JoinResponse
 import com.example.buildup.data.LoginRequest
 import com.example.buildup.data.ServerResponse
+import com.example.buildup.data.SkinAdviceRequest
+import com.example.buildup.data.SkinAdviceResponse
 import com.example.buildup.data.UpdateNicknameRequest
 import com.example.buildup.data.UpdatePWRequest
 import com.example.buildup.data.UpdatePWResponse
@@ -50,4 +52,7 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Part("user_id") userId: RequestBody
     ): Call<AnalysisResponse>
+
+    @POST("/chatbot/skin_advice") // 닉네임 수정 엔드포인트 (POST 방식)
+    fun getSkinAdvice(@Body request: SkinAdviceRequest): Call<SkinAdviceResponse> // 요청 데이터와 응답 데이터 타입 정의
 }

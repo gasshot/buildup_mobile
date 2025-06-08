@@ -57,7 +57,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:text="당신은"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewTon"
@@ -66,7 +66,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:text="봄날의 햇살 가을웜톤(fall)"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -84,17 +84,8 @@
                     android:layout_height="wrap_content"
                     android:text="피부 타입 설명"
                     android:textColor="#333333"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewSkinTypeContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="피부 타입 설명을 여기에 입력하세요."
-                    android:textColor="#666666"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
 
             </LinearLayout>
 
@@ -113,28 +104,78 @@
                     android:layout_height="wrap_content"
                     android:text="제품 설명"
                     android:textColor="#333333"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textViewRecommendContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="제품 설명을 여기에 입력하세요."
                     android:textColor="#666666"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutAI"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/rounded_shadow_background"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewAITitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AI가 현재 대기중입니다."
+                        android:textColor="#333333"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewAIContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="AI 버튼을 눌러서 조언을 받아보세요."
+                        android:textColor="#666666"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonAI"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/rounded_shadow_background"
+                    android:textSize="24dp"
+                    android:textColor="@color/skinthera"
+                    android:text="AI" />
+
+
+            </LinearLayout>
+
 
             <Button
                 android:id="@+id/btnToMain"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="48dp"
                 android:background="@drawable/rounded_shadow_background_white"
                 android:text="돌아가기"
-                android:textColor="#909090" />
+                android:textColor="@color/skinthera"
+                android:textSize="24dp" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Skinthera</string>
+    <string name="copyright">Copyright 2025 buildup All rights reserved.</string>
     <string name="success_join">회원가입이 성공적으로 완료되었습니다.</string>
     <string name="error_all_fields_required">모든 필드를 입력해주세요.</string>
     <string name="error_password_mismatch">비밀번호가 일치하지 않습니다.</string>
@@ -21,5 +22,5 @@
     <string name="error_nickname_invalid">닉네임은 한글 6글자 이내로 입력해야 합니다.</string>
     <string name="kakao_app_key">e6e454a1f0c187fb8abf3b764b1a5ce3</string>
     <string name="scheme_kakao_app_key">kakaoe6e454a1f0c187fb8abf3b764b1a5ce3</string>
-    <string name="skin_thera">SKIN THERA</string>
+    <string name="skin_thera">SKINTHERA</string>
 </resources>

@@ -57,10 +57,12 @@ dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.activity:activity-ktx:1.7.2") // 최신 버전으로 맞추세요
     implementation("androidx.fragment:fragment-ktx:1.5.7") // fragment-ktx도 같이 쓰면 좋아요
-
+    implementation("com.airbnb.android:lottie:5.2.0")
     // CardView 라이브러리 추가 (최신 버전으로 확인해서 사용하세요)
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("com.google.android.material:material:1.8.0")
+
 
     implementation ("com.kakao.sdk:v2-all:2.20.0") // 전체 모듈 설치, 2.11.0 버전부터 지원
     implementation ("com.kakao.sdk:v2-user:2.20.0") // 카카오 로그인 API 모듈

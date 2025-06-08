@@ -26,7 +26,7 @@ class PageFragment : Fragment() {
         // ImageView 설정
         val pageImageView = view.findViewById<ImageView>(R.id.pageImageView)
         val imageResId = when (pageNumber) {
-            1 -> R.drawable.skinthera1  // 페이지 1의 이미지
+            1 -> R.drawable.main_page_01  // 페이지 1의 이미지
             2 -> R.drawable.skinthera3  // 페이지 2의 이미지
             else -> R.drawable.skinthera2 // 기본 이미지
         }

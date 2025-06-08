@@ -11,10 +11,10 @@ object RetrofitClient {
 
 
     // FastAPI 서버의 배포된 주소
-    //private const val BASE_URL = "https://exotic-broadly-eel.ngrok-free.app/"
+    private const val BASE_URL = "https://exotic-broadly-eel.ngrok-free.app/"
 
     // 환경에 따라 URL 변경
-    private const val BASE_URL = "http://211.245.5.206:8000/"
+    //private const val BASE_URL = "http://211.245.5.206:8000/"
 
     // Interceptor 설정
     private val interceptor = Interceptor { chain ->

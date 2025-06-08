@@ -8,6 +8,8 @@ import com.example.buildup.data.JoinResponse
 import com.example.buildup.data.LoginRequest
 import com.example.buildup.data.LoginResponse
 import com.example.buildup.data.ServerResponse
+import com.example.buildup.data.SkinAdviceRequest
+import com.example.buildup.data.SkinAdviceResponse
 import com.example.buildup.data.UpdateNicknameRequest
 import com.example.buildup.data.UpdatePWRequest
 import com.example.buildup.data.UpdatePWResponse
@@ -195,6 +197,7 @@ object ApiManager {
                         if (result != null) {
                             val resultMap = mapOf(
                                 "personal_color_tone" to result.personalColorTone,
+                                "skin_Analysis" to result.skinAnalysis,
                                 "created_at" to result.createdAt,
                                 "s3_url" to result.s3Url
                             )
@@ -212,4 +215,33 @@ object ApiManager {
                 }
             })
     }
+
+    fun fetchSkinAdvice(
+        userId: String,
+        predictedSkinType: String,
+        personalColorTone: String,
+        callback: (success: Boolean, advice: String?) -> Unit
+    ) {
+        val request = SkinAdviceRequest(userId, predictedSkinType, personalColorTone)
+
+        RetrofitClient.instance.getSkinAdvice(request)
+            .enqueue(object : Callback<SkinAdviceResponse> {
+                override fun onResponse(
+                    call: Call<SkinAdviceResponse>,
+                    response: Response<SkinAdviceResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        callback(true, response.body()?.advice)
+                    } else {
+                        callback(false, null)
+                    }
+                }
+
+                override fun onFailure(call: Call<SkinAdviceResponse>, t: Throwable) {
+                    callback(false, null)
+                }
+            })
+    }
+
+
 }
