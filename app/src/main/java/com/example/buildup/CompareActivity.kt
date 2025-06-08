@@ -39,7 +39,7 @@ class CompareActivity : AppCompatActivity() {
                     showLoading(false)
                     if (success && response != null) {
                         populateAnalysisHistory(response.data)
-                        setupSpinners()
+                        setupAllSpinners() // 변경: 6개 spinner 세팅
                     } else {
                         Toast.makeText(this, "데이터를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
@@ -116,43 +116,72 @@ class CompareActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupSpinners() {
-        val dateList = analysisHistory.map { it.date }.distinct()
+    // ------------- 6개 Spinner 세팅 (왼쪽 연,월,일 + 오른쪽 연,월,일) -------------
+    private fun setupAllSpinners() {
+        val years = analysisHistory.map { it.date.substring(0, 4) }.distinct().sorted()
+        val months = (1..12).map { it.toString().padStart(2, '0') }
+        val days = (1..31).map { it.toString().padStart(2, '0') }
 
-        setupSpinner(binding.spinnerLeft, dateList) { selectedDate ->
-            updateListView(binding.listViewLeft, selectedDate) { id -> selectedPastDataId = id }
-        }
+        // 왼쪽
+        setupSpinner(binding.spinnerYearLeft, years) { updateListViewLeftByDate() }
+        setupSpinner(binding.spinnerMonthLeft, months) { updateListViewLeftByDate() }
+        setupSpinner(binding.spinnerDayLeft, days) { updateListViewLeftByDate() }
 
-        setupSpinner(binding.spinnerRight, dateList) { selectedDate ->
-            updateListView(binding.listViewRight, selectedDate) { id -> selectedCurrentDataId = id }
+        // 오른쪽
+        setupSpinner(binding.spinnerYearRight, years) { updateListViewRightByDate() }
+        setupSpinner(binding.spinnerMonthRight, months) { updateListViewRightByDate() }
+        setupSpinner(binding.spinnerDayRight, days) { updateListViewRightByDate() }
+
+        // 기본 선택값 (있으면 첫 항목)
+        if (years.isNotEmpty()) {
+            binding.spinnerYearLeft.setSelection(0)
+            binding.spinnerYearRight.setSelection(0)
         }
+        binding.spinnerMonthLeft.setSelection(0)
+        binding.spinnerMonthRight.setSelection(0)
+        binding.spinnerDayLeft.setSelection(0)
+        binding.spinnerDayRight.setSelection(0)
     }
 
-    private fun setupSpinner(spinner: Spinner, data: List<String>, onItemSelected: (String) -> Unit) {
+    private fun setupSpinner(spinner: Spinner, data: List<String>, onItemSelected: () -> Unit) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, data)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
-                val selectedItem = data[position]
-                onItemSelected(selectedItem)
+                onItemSelected()
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // 선택이 해제된 경우 처리할 로직
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+    }
+
+    // 왼쪽 리스트뷰 업데이트
+    private fun updateListViewLeftByDate() {
+        val year = binding.spinnerYearLeft.selectedItem as? String ?: return
+        val month = binding.spinnerMonthLeft.selectedItem as? String ?: return
+        val day = binding.spinnerDayLeft.selectedItem as? String ?: return
+
+        val selectedDate = "$year년 $month월 $day일"
+        updateListView(binding.listViewLeft, selectedDate) { id -> selectedPastDataId = id }
+    }
+
+    // 오른쪽 리스트뷰 업데이트
+    private fun updateListViewRightByDate() {
+        val year = binding.spinnerYearRight.selectedItem as? String ?: return
+        val month = binding.spinnerMonthRight.selectedItem as? String ?: return
+        val day = binding.spinnerDayRight.selectedItem as? String ?: return
+
+        val selectedDate = "$year년 $month월 $day일"
+        updateListView(binding.listViewRight, selectedDate) { id -> selectedCurrentDataId = id }
     }
 
     private fun updateListView(listView: android.widget.ListView, filterDate: String, onItemClick: (String) -> Unit) {
         val filteredList = analysisHistory.filter { it.date == filterDate }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, filteredList.map { it.name }) // 시간만 표시
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, filteredList.map { it.name })
         listView.adapter = adapter
 
         listView.setOnItemClickListener { _, _, position, _ ->
@@ -162,5 +191,3 @@ class CompareActivity : AppCompatActivity() {
         }
     }
 }
-
-
