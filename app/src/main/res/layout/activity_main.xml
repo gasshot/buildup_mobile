@@ -48,22 +48,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- TabLayout (z축 위로 올림) -->
+    <!-- TabLayout (ViewPager2 바로 아래) -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@null"
-        android:elevation="0dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="@id/viewPager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tabIndicatorColor="@color/primary"
-        app:tabSelectedTextColor="@color/primary"
-        app:tabTextColor="@color/secondary" />
+        app:tabIndicatorHeight="6dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -134,7 +131,7 @@
         android:id="@+id/chatBotBtn"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="156dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/sphered_shadow_background_white"
         android:clickable="true"
@@ -157,7 +154,6 @@
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Q&amp;A 챗봇"
         android:textAlignment="center"
         android:textColor="#646464"

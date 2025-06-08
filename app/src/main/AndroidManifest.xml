@@ -25,9 +25,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SkinAdviceActivity"
+            android:name=".CompareActivity"
             android:exported="false" />
-        <!-- 기존 액티비티 선언들 -->
+        <activity
+            android:name=".SkinAdviceActivity"
+            android:exported="false" /> <!-- 기존 액티비티 선언들 -->
         <activity
             android:name=".ResultActivity"
             android:exported="false" />

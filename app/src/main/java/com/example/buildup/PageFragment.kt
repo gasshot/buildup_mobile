@@ -32,13 +32,16 @@ class PageFragment : Fragment() {
         }
         pageImageView?.setImageResource(imageResId)
 
-        // Button 설정
         val pageButton = view.findViewById<Button>(R.id.pageButton)
-        pageButton?.text = "$pageNumber 번째 페이지 버튼"
+        pageButton?.text = when (pageNumber) {
+            1 -> "피부분석"
+            2 -> "비교하기"
+            else -> "$pageNumber 번째 페이지 버튼"
+        }
         pageButton?.setOnClickListener {
             when (pageNumber) {
-                1 -> Toast.makeText(requireContext(), "1번 페이지 버튼 클릭!", Toast.LENGTH_SHORT).show()
-                2 -> Toast.makeText(requireContext(), "2번 페이지 버튼 클릭!", Toast.LENGTH_SHORT).show()
+                1 -> Toast.makeText(requireContext(), "피부분석 버튼 클릭!", Toast.LENGTH_SHORT).show()
+                2 -> Toast.makeText(requireContext(), "비교하기 버튼 클릭!", Toast.LENGTH_SHORT).show()
                 else -> Toast.makeText(requireContext(), "기본 페이지 버튼 클릭!", Toast.LENGTH_SHORT).show()
             }
         }

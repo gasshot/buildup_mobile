@@ -19,5 +19,6 @@
         android:layout_gravity="center"
         android:backgroundTint="@color/white"
         android:text="페이지 버튼"
+        android:textSize="24dp"
         android:textColor="@color/black" />
 </FrameLayout>

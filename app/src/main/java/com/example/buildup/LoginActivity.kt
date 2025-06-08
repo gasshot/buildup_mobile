@@ -8,6 +8,7 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -43,8 +44,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonEditorLogin: TextView
     private lateinit var backgroundImageView: ImageView
 
-    private lateinit var buttonLoginGoogle: Button
-    private lateinit var buttonLoginKakao: Button
+    private lateinit var buttonLoginGoogle: FrameLayout
+    private lateinit var buttonLoginKakao: FrameLayout
 
 
     private val images = listOf(

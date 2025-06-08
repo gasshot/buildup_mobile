@@ -9,6 +9,8 @@ import com.example.buildup.data.CheckPWResponse
 import com.example.buildup.data.JoinRequest
 import com.example.buildup.data.JoinResponse
 import com.example.buildup.data.LoginRequest
+import com.example.buildup.data.PastAnalysisRequest
+import com.example.buildup.data.PastAnalysisResponse
 import com.example.buildup.data.ServerResponse
 import com.example.buildup.data.SkinAdviceRequest
 import com.example.buildup.data.SkinAdviceResponse
@@ -55,4 +57,7 @@ interface ApiService {
 
     @POST("/chatbot/skin_advice") // 닉네임 수정 엔드포인트 (POST 방식)
     fun getSkinAdvice(@Body request: SkinAdviceRequest): Call<SkinAdviceResponse> // 요청 데이터와 응답 데이터 타입 정의
+
+    @POST("user/get/past-analysis") // 닉네임 수정 엔드포인트 (POST 방식)
+    fun fetchAnalysisData(@Body request: PastAnalysisRequest): Call<PastAnalysisResponse> // 요청 데이터와 응답 데이터 타입 정의
 }

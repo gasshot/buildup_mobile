@@ -1,18 +1,18 @@
 package com.example.buildup
 
 import PagerAdapter
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
-import androidx.viewpager2.widget.ViewPager2
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 import com.example.buildup.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,12 +26,20 @@ class MainActivity : AppCompatActivity() {
         val viewPager: ViewPager2 = findViewById(R.id.viewPager)
         val adapter = PagerAdapter(this)
         viewPager.adapter = adapter
+
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
 
-        // ViewPager2와 TabLayout 연결
+        // TabLayout과 ViewPager2 연결
         TabLayoutMediator(tabLayout, viewPager) { _, _ ->
-            // 탭의 제목 설정 필요 없으면 비워둠
+            // 탭 제목 필요하면 작성
         }.attach()
+
+// 탭 뷰 전체에 클릭 불가 처리 (터치 이벤트도 막음)
+        for (i in 0 until binding.tabLayout.tabCount) {
+            binding.tabLayout.getTabAt(i)?.view?.isClickable = false
+            binding.tabLayout.getTabAt(i)?.view?.isFocusable = false
+        }
+        binding.tabLayout.isEnabled = false
 
         // SharedPreferences에서 사용자 정보 불러오기
         val sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE)
@@ -40,27 +48,23 @@ class MainActivity : AppCompatActivity() {
 
         binding.textView6.text = "${userNickname}님"
 
-        // 마이페이지 버튼 동작
+        // 버튼 클릭 리스너
         binding.buttonMypage.setOnClickListener {
-            val intent = Intent(this@MainActivity, MypageActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@MainActivity, MypageActivity::class.java))
             finish()
         }
 
         binding.recommendBtn.setOnClickListener {
-            // 다음 화면으로 이동(과거 기록 비교 분석 화면)
+            val intent = Intent(this@MainActivity, CompareActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
-        // 분석 버튼 클릭 시 이미지 선택 Intent 호출
         binding.AnalysisBtn.setOnClickListener {
-
-            // 다음 화면으로 이동(분석화면)
             val intent = Intent(this@MainActivity, AnalysisActivity::class.java)
             intent.putExtra("userId", userId)
             startActivity(intent)
             finish()
         }
-
     }
-
 }

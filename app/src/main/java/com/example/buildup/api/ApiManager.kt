@@ -1,5 +1,6 @@
 package com.example.buildup.api
 
+import com.example.buildup.AnalysisData
 import com.example.buildup.data.AnalysisResponse
 import com.example.buildup.data.CheckPWRequest
 import com.example.buildup.data.CheckPWResponse
@@ -7,6 +8,8 @@ import com.example.buildup.data.JoinRequest
 import com.example.buildup.data.JoinResponse
 import com.example.buildup.data.LoginRequest
 import com.example.buildup.data.LoginResponse
+import com.example.buildup.data.PastAnalysisRequest
+import com.example.buildup.data.PastAnalysisResponse
 import com.example.buildup.data.ServerResponse
 import com.example.buildup.data.SkinAdviceRequest
 import com.example.buildup.data.SkinAdviceResponse
@@ -14,10 +17,14 @@ import com.example.buildup.data.UpdateNicknameRequest
 import com.example.buildup.data.UpdatePWRequest
 import com.example.buildup.data.UpdatePWResponse
 import com.example.buildup.data.User
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 
 // 비동기 통신 임포트
@@ -238,6 +245,35 @@ object ApiManager {
                 }
 
                 override fun onFailure(call: Call<SkinAdviceResponse>, t: Throwable) {
+                    callback(false, null)
+                }
+            })
+    }
+
+    fun fetchAnalysisData(
+        userId: String,
+        callback: (success: Boolean, response: PastAnalysisResponse?) -> Unit
+    ) {
+        val request = PastAnalysisRequest(userId)
+
+        RetrofitClient.instance.fetchAnalysisData(request)
+            .enqueue(object : Callback<PastAnalysisResponse> {
+                override fun onResponse(
+                    call: Call<PastAnalysisResponse>,
+                    response: Response<PastAnalysisResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        // 성공적으로 데이터를 받아온 경우
+                        callback(true, response.body())
+                    } else {
+                        // 응답은 성공적이지만 데이터가 없는 경우
+                        callback(false, null)
+                    }
+                }
+
+                override fun onFailure(call: Call<PastAnalysisResponse>, t: Throwable) {
+                    // 네트워크 또는 기타 요청 실패 처리
+                    t.printStackTrace() // 로그 출력
                     callback(false, null)
                 }
             })
