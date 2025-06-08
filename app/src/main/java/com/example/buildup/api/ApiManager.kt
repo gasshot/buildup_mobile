@@ -1,6 +1,5 @@
 package com.example.buildup.api
 
-import com.example.buildup.AnalysisData
 import com.example.buildup.data.AnalysisResponse
 import com.example.buildup.data.CheckPWRequest
 import com.example.buildup.data.CheckPWResponse
