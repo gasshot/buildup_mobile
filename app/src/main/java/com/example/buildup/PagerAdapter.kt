@@ -1,4 +1,5 @@
 import androidx.fragment.app.Fragment
+import com.example.buildup.PageFragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 

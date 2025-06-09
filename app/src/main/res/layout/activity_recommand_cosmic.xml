@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@android:color/white"
-    tools:ignore="ExtraText">
+    android:padding="16dp">
 
     <!-- 아이콘 이미지 -->
-    <!-- 본인 아이콘으로 교체 -->
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- 제목 -->
     <TextView
-        android:id="@+id/adviceTitle"
+        android:id="@+id/recommendTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -37,35 +29,23 @@
         android:layout_height="2dp"
         android:layout_marginTop="8dp"
         android:background="@color/primary"
-        app:layout_constraintTop_toBottomOf="@id/adviceTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- ScrollView 안에 CardView로 감싼 조언 텍스트 -->
-    <ScrollView
-        android:id="@+id/adviceScrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
-        android:clipToPadding="false"
-        android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
-
-        <TextView
-            android:id="@+id/adviceTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:lineSpacingExtra="6dp"
-            android:text="조언 내용이 여기에 표시됩니다."
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/recommendTitle" />
 
 
+    <ImageView
+        android:id="@+id/recommendImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="조언 이미지"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <!-- 돌아가기 버튼 -->
     <Button
@@ -82,5 +62,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

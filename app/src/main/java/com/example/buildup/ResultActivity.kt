@@ -98,16 +98,22 @@ class ResultActivity : AppCompatActivity() {
                 setDrawLabels(false)
             }
         }
-
+        binding.buttonCosmic.setOnClickListener {
+            val intent = Intent(this@ResultActivity, RecommendCosmicActivity::class.java).apply {
+                putExtra("personal_color_tone", personalColorTone)
+                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP // 이미 존재하면 재활성화
+            }
+            startActivity(intent)
+        }
 
         binding.buttonAI.setOnClickListener {
             val intent = Intent(this@ResultActivity, SkinAdviceActivity::class.java).apply {
                 putExtra("personal_color_tone", personalColorTone)
-                putExtra("skin_analysis_json", skinAnalysisJson)
+                putExtra("predicted_skin_type", predictedSkinType)
                 putExtra("requester", requester)
+                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP // 이미 존재하면 재활성화
             }
             startActivity(intent)
-            finish()
         }
 
         // 메인화면 이동 버튼
@@ -117,9 +123,10 @@ class ResultActivity : AppCompatActivity() {
         }
 
         // 피부 타입 텍스트 (HTML 포함)
-        val htmlText = "당신의 피부 타입은 <b>🌻${predictedSkinType}🌻</b> 입니다."
+        val htmlText = "당신의 피부 타입은 <b>${predictedSkinType}</b> 입니다."
         binding.textViewTon.text = personalColorTone
-        binding.textViewSkinTypeTitle.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.textViewRecommendContent.text ="추천 버튼을 눌러서 제품을 추천받아보세요."
+        binding.textViewSkinTypeContent.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
     private fun normalizeScore(value: Float, range: Pair<Float, Float>): Float {

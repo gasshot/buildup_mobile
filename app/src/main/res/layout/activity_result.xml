@@ -77,15 +77,22 @@
                 android:background="@drawable/rounded_shadow_background"
                 android:orientation="vertical"
                 android:padding="16dp">
-
                 <TextView
                     android:id="@+id/textViewSkinTypeTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="피부 타입 설명"
+                    android:text="피부 타입"
                     android:textColor="#333333"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewSkinTypeContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="피부 타입 설명"
+                    android:textColor="#333333"
+                    android:textSize="20sp"/>
 
             </LinearLayout>
 
@@ -95,26 +102,43 @@
                 android:layout_height="140dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/rounded_shadow_background"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:padding="16dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textViewRecommendTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="제품 설명"
-                    android:textColor="#333333"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textViewRecommendTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="제품 추천"
+                        android:textColor="#333333"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewRecommendContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="개발중."
-                    android:textColor="#666666"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/textViewRecommendContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="현재 퍼스널 컬러"
+                        android:textColor="#666666"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonCosmic"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/rounded_shadow_background"
+                    android:textSize="24dp"
+                    android:textColor="@color/skinthera"
+                    android:text="추천" />
 
             </LinearLayout>
 

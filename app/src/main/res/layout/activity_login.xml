@@ -124,7 +124,7 @@
         android:id="@+id/editorLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="17dp"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -133,7 +133,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/signupText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -152,8 +152,8 @@
 
     <FrameLayout
         android:id="@+id/buttonLoginGoogle"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@drawable/rounded_button_google"
         android:clickable="true"
         android:focusable="true"
@@ -163,8 +163,8 @@
         app:layout_constraintTop_toTopOf="@+id/buttonLoginKakao">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:contentDescription="구글 로그인 아이콘"
             android:src="@drawable/google_logo" />
@@ -172,8 +172,8 @@
 
     <FrameLayout
         android:id="@+id/buttonLoginKakao"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_button_kakao"
         android:clickable="true"
@@ -183,8 +183,8 @@
         app:layout_constraintTop_toBottomOf="@+id/dividerLine">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:contentDescription="카카오 로그인 아이콘"
             android:src="@drawable/kakao_logo" />
@@ -203,6 +203,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonLoginKakao"
+        app:layout_constraintEnd_toStartOf="@+id/buttonLoginGoogle"
+        app:layout_constraintStart_toEndOf="@+id/buttonLoginKakao"
+        app:layout_constraintTop_toTopOf="@+id/buttonLoginKakao" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,11 +14,11 @@
     <!-- 버튼 -->
     <Button
         android:id="@+id/pageButton"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/rounded_shadow_background_skinthera"
         android:text="페이지 버튼"
-        android:textSize="24dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/skinthera_back"
+        android:textSize="24dp" />
 </FrameLayout>

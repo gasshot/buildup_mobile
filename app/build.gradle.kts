@@ -58,7 +58,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.7.2") // 최신 버전으로 맞추세요
     implementation("androidx.fragment:fragment-ktx:1.5.7") // fragment-ktx도 같이 쓰면 좋아요
     implementation("com.airbnb.android:lottie:5.2.0")
-    // CardView 라이브러리 추가 (최신 버전으로 확인해서 사용하세요)
+    implementation("io.noties.markwon:core:4.6.2")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("com.google.android.material:material:1.8.0")

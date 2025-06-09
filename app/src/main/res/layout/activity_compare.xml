@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,79 +18,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 왼쪽 연 스피너 -->
-    <Spinner
-        android:id="@+id/spinnerYearLeft"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/buttonYearLeft"
+        android:layout_width="238dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_box"
+        android:text="선택: 연도"
+        app:layout_constraintEnd_toStartOf="@+id/buttonYearRight"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewUserName"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
         app:layout_constraintWidth_percent="0.16" />
 
-    <!-- 왼쪽 월 스피너 -->
-
-    <!-- 왼쪽 일 스피너 -->
-    <Spinner
-        android:id="@+id/spinnerMonthLeft"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/buttonMonthLeft"
+        android:layout_width="118dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/spinnerYearLeft"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerYearLeft"
+        android:background="@drawable/edittext_box"
+        android:text="선택: 월"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDayLeft"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonYearLeft"
         app:layout_constraintWidth_percent="0.16" />
 
-    <!-- 오른쪽 연 스피너 -->
-    <Spinner
-        android:id="@+id/spinnerDayLeft"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerMonthLeft"
-        app:layout_constraintStart_toEndOf="@+id/textLeftMonth"
-        app:layout_constraintTop_toTopOf="@+id/spinnerMonthLeft"
+    <!-- 오른쪽 연 버튼 -->
+
+    <Button
+        android:id="@+id/buttonDayLeft"
+        android:layout_width="119dp"
+        android:layout_height="0dp"
+        android:background="@drawable/edittext_box"
+        android:text="선택: 일"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonMonthLeft"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMonthRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonMonthLeft"
+        app:layout_constraintTop_toTopOf="@+id/buttonMonthLeft"
         app:layout_constraintWidth_percent="0.16" />
 
-    <!-- 오른쪽 월 스피너 -->
+    <!-- 오른쪽 월 버튼 -->
 
-    <!-- 오른쪽 일 스피너 -->
-
-    <!-- 왼쪽 리스트뷰 -->
-
-    <!-- 오른쪽 리스트뷰 -->
-
-    <!-- 텍스트뷰 (위치 조정 필요하면 수정) -->
-
-    <Spinner
-        android:id="@+id/spinnerYearRight"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/buttonYearRight"
+        android:layout_width="239dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerMonthRight"
+        android:background="@drawable/edittext_box"
+        android:text="선택: 연도"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMonthRight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinnerMonthRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonYearLeft"
         app:layout_constraintWidth_percent="0.16" />
 
-    <Spinner
-        android:id="@+id/spinnerMonthRight"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerDayRight"
-        app:layout_constraintStart_toStartOf="@+id/spinnerDayRight"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerDayRight"
+    <!-- 오른쪽 일 버튼 -->
+
+    <Button
+        android:id="@+id/buttonMonthRight"
+        android:layout_width="119dp"
+        android:layout_height="0dp"
+        android:background="@drawable/edittext_box"
+        android:text="선택: 월"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDayLeft"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDayRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonDayLeft"
+        app:layout_constraintTop_toTopOf="@+id/buttonDayLeft"
         app:layout_constraintWidth_percent="0.16" />
 
-    <Spinner
-        android:id="@+id/spinnerDayRight"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="160dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerYearLeft"
-        app:layout_constraintStart_toEndOf="@+id/spinnerYearLeft"
-        app:layout_constraintTop_toTopOf="@+id/spinnerYearLeft"
-        app:layout_constraintVertical_bias="0.0"
+    <Button
+        android:id="@+id/buttonDayRight"
+        android:layout_width="119dp"
+        android:layout_height="0dp"
+        android:background="@drawable/edittext_box"
+        android:text="선택: 일"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonMonthRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonMonthRight"
+        app:layout_constraintTop_toTopOf="@+id/buttonMonthRight"
         app:layout_constraintWidth_percent="0.16" />
 
     <ListView
@@ -108,25 +114,35 @@
         android:id="@+id/listViewLeft"
         android:layout_width="0dp"
         android:layout_height="260dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@id/listViewRight"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerYearLeft"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMonthLeft"
         app:layout_constraintWidth_percent="0.48" />
 
-    <!-- 돌아가기 버튼 -->
-
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textTest1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="288dp"
+        android:layout_marginBottom="188dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@id/buttonReturnToMain2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/textTest2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="188dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@id/buttonReturnToMain2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 돌아가기 버튼 -->
     <Button
         android:id="@+id/buttonReturnToMain2"
         android:layout_width="0dp"
@@ -134,10 +150,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_shadow_background_white"
         android:text="돌아가기"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/compareButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- 차트 보기 버튼 -->
     <Button
@@ -147,46 +166,38 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="48dp"
+        android:background="@drawable/rounded_shadow_background_skinthera"
         android:text="차트 보기"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="과거 기록 선택"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
 
     <TextView
-        android:id="@+id/textLeftYear"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/textView13"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="년"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerYearLeft"
-        app:layout_constraintStart_toEndOf="@+id/spinnerYearLeft"
-        app:layout_constraintTop_toTopOf="@+id/spinnerYearLeft"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textLeftMonth"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:gravity="center"
-        android:text="월"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerMonthLeft"
-        app:layout_constraintStart_toEndOf="@+id/spinnerMonthLeft"
-        app:layout_constraintTop_toTopOf="@+id/spinnerMonthLeft" />
-
-    <TextView
-        android:id="@+id/textLeftDay"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:gravity="center"
-        android:text="일"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerDayLeft"
-        app:layout_constraintStart_toEndOf="@+id/spinnerDayLeft"
-        app:layout_constraintTop_toTopOf="@+id/spinnerDayLeft" />
+        android:text="현재 기록 선택"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
